@@ -14,6 +14,6 @@ To avoid this, apps should check the entire redirect URI and not just the domain
 
 ## User Experience vs. Security ⚖️
 
-Adding “Login with Google” or similar options makes things easier for users, it’s quicker, and they don’t need to remember a new password. But for developers it adds more responsibility. The app has to handle tokens safely and make sure the OAuth flow is secure.
+Adding “Login with Google” or similar options makes things easier for users, it’s quicker, and they don’t need to remember a new password, but for developers it adds more responsibility. The app has to handle tokens safely and make sure the OAuth flow is secure.
 
 There’s a clear trade-off here: better user experience vs. higher risk if something goes wrong. If developers don’t set up OAuth correctly, like forgetting the `state` check or not validating redirect URIs properly, it could open up serious security issues. So, it’s important to balance ease of use with doing the extra work to keep user data safe.

@@ -8,12 +8,10 @@ The `state` parameter helps fix this by acting like a secret code the app create
 
 ## Redirect URI Attacks 🎯
 
-One mistake developers sometimes make is only checking that the redirect URI has the right domain, but if they allow any path under that domain, it can be a problem. Let’s say an app allows redirects to anything under `https://trusted.com`. An attacker could create a page like `https://trusted.com/evil` and get the app to send the authorization code there. Then they’d be able to grab the code and use it to pretend to be the user.
+One mistake developers sometimes make is only checking that the redirect URI has the right domain, but if they allow any path under that domain, it can be a problem. Let’s say an app allows redirects to anything under `https://trusted.com`. An attacker could create a page like `https://trusted.com/yeahright` and get the app to send the authorization code there. Then they’d be able to grab the code and use it to pretend to be the user.
 
 To avoid this, apps should check the entire redirect URI and not just the domain. Only exact matches to pre-approved URLs should be allowed that way the app knows exactly where it’s sending sensitive info.
 
 ## User Experience vs. Security ⚖️
 
-Adding “Login with Google” or similar options makes things easier for users, it’s quicker, and they don’t need to remember a new password, but for developers it adds more responsibility. The app has to handle tokens safely and make sure the OAuth flow is secure.
-
-There’s a clear trade-off here: better user experience vs. higher risk if something goes wrong. If developers don’t set up OAuth correctly, like forgetting the `state` check or not validating redirect URIs properly, it could open up serious security issues. So, it’s important to balance ease of use with doing the extra work to keep user data safe.
+Adding a third-party login option like “Sign in with Apple” can really boost the user experience, especially for people already using Apple devices. It makes signing up quick and easy, and users don’t have to remember another password and another plus is Apple gives users more control over their privacy, like hiding their email address. But even though it’s super convenient, it also makes things more complicated behind the scenes. Developers have to make sure they handle Apple’s identity tokens the right way and keep sessions secure. If they skip important steps like verifying the token or checking redirect URIs properly, it could lead to serious issues, like someone gaining access to accounts they shouldn’t. So while users get a smoother login process, developers have to put in extra effort to make sure everything stays safe.
